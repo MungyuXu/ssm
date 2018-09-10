@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.TourMapper">
+    <resultMap id="getMap" type="Tour">
+        <id property="id" column="id"></id>
+        <result property="title" column="title"></result>
+        <result property="description" column="description"></result>
+        <result property="traffic" column="traffic"></result>
+        <result property="term" column="term"></result>
+        <result property="newPrice" column="new_price"></result>
+        <result property="oldPrice" column="old_price"></result>
+        <result property="provider" column="provider"></result>
+        <result property="type" column="type"></result>
+        <result property="addDate" column="add_date"></result>
+        <result property="photo" column="photo"></result>
+        <result property="route" column="route"></result>
+    </resultMap>
+
+    <select id="queryTour" parameterType="Integer" resultMap="getMap">
+        select  * from tour where type ='限时特价'
+        order by add_date desc limit #{num}
+    </select>
+
+    <select id="queryTour2" parameterType="Integer" resultMap="getMap">
+        select  * from tour where type ='热门旅游'
+        order by add_date desc limit #{num}
+    </select>
+</mapper>
