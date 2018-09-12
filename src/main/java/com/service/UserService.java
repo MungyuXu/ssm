@@ -1,16 +1,14 @@
-package com.mapper;
+package com.service;
 
 import com.model.Tour;
 import com.model.User;
 
 import java.util.List;
 
-public interface UserMapper {
-    User queryByUserName(User user);
-
+public interface UserService {
     public List<User> queryAll(User user);
     public  void  add(User user);
-    public void del(Integer id);
+    public  void  del(Integer id);
     public  User getById(Integer id);
-    public void  update(User user);
+    public  void  update(User user);
 }

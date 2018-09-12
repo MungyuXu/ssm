@@ -27,4 +27,42 @@
         select  * from tour where type ='热门旅游'
         order by add_date desc limit #{num}
     </select>
+
+    <select id="queryAll" parameterType="Tour" resultMap="getMap">
+        select  * from tour
+        <where>
+            <if test="title!=null and title !='' ">
+                and title like concat('%',#{title},'%')
+            </if>
+            <if test="startDate!=null and startDate!='' ">
+                and add_date >= #{startDate}
+            </if>
+            <if test="endDate!=null and endDate!='' ">
+                and add_date &lt;= #{endDate}
+            </if>
+        </where>
+        order by add_date desc
+    </select>
+
+    <insert id="add" parameterType="Tour">
+		insert into tour(title,description,traffic,term,new_price,old_price,
+		provider,type,photo,route,add_date)
+		values(#{title},#{description},#{traffic},#{term},#{newPrice},#{oldPrice},
+		#{provider},#{type},#{photo},#{route},now())
+	</insert>
+
+    <delete id="del" parameterType="Integer">
+		delete from tour where id=#{id}
+	</delete>
+
+    <select id="getById" parameterType="Integer" resultMap="getMap">
+		select id,title,description,traffic,term,new_price,old_price,
+		provider,type,add_date,photo,route from tour where id=#{id}
+	</select>
+
+    <update id="update" parameterType="Tour">
+		update tour set title=#{title},description=#{description},traffic=#{traffic},term=#{term},
+		new_price=#{newPrice},old_price=#{oldPrice},provider=#{provider},type=#{type},route=#{route}
+		where id=#{id}
+	</update>
 </mapper>

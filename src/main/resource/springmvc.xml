@@ -25,13 +25,13 @@
 
     <!-- <bean id="/OneController" class="com.controller.OneController"></bean> -->
 
-    <mvc:annotation-driven conversion-service="conversionService"/>
+    <!--<mvc:annotation-driven conversion-service="conversionService"/>-->
 
     <!-- 配置转换器 -->
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <list>
-                <!--<bean class="controller.DateConvert"/>-->
+                <bean class="com.controller.DateConvert"/>
             </list>
         </property>
     </bean>

@@ -11,5 +11,32 @@
         select  * from user where username=#{username}
     </select>
 
+    <select id="queryAll" parameterType="User" resultType="User">
+        select * from user
+        <where>
+            <if test="username!=null and username !='' ">
+                and username like concat('%',#{username},'%')
+            </if>
+            <if test="password!=null and password !='' ">
+                and password like concat('%',#{password},'%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="add" parameterType="Tour">
+        insert  into user(username, password) values (#{username},#{password})
+    </insert>
+
+    <delete id="del" parameterType="Integer">
+        delete  from user where  id=#{id}
+    </delete>
+
+    <select id="getById" parameterType="Integer" resultType="User">
+        select  * from  user where id=#{id}
+    </select>
+
+    <update id="update" parameterType="Tour">
+        update user set username=#{username},password=#{password}
+    </update>
 </mapper>
 

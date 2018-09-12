@@ -16,6 +16,28 @@ public class Tour {
     private Date addDate;
     private  String photo;
 
+    //查询起始日期
+    private Date startDate;
+
+    //查询结束日期
+    private Date endDate;
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
     public Integer getId() {
         return id;
     }

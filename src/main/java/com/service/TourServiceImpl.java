@@ -8,15 +8,42 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TourServiceImpl implements  TourService{
+public class TourServiceImpl implements TourService {
     @Autowired
-  private   TourMapper tourMapper;
+    private TourMapper tourMapper;
+
     @Override
     public List<Tour> queryTour(Integer num) {
         return this.tourMapper.queryTour(num);
     }
+
     @Override
     public List<Tour> queryTour2(Integer num) {
         return this.tourMapper.queryTour2(num);
+    }
+
+    @Override
+    public List<Tour> queryAll(Tour tour) {
+        return this.tourMapper.queryAll(tour);
+    }
+
+    @Override
+    public void add(Tour tour) {
+        this.tourMapper.add(tour);
+    }
+
+    @Override
+    public void del(Integer id) {
+        this.tourMapper.del(id);
+    }
+
+    @Override
+    public Tour getById(Integer id) {
+        return this.tourMapper.getById(id);
+    }
+
+    @Override
+    public void update(Tour tour) {
+        this.tourMapper.update(tour);
     }
 }
