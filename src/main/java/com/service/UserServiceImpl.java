@@ -19,9 +19,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void add(User user) {
+    public int add(User user) {
+if (userMapper.queryByUserName(user)==null){
+    this.userMapper.add(user);
+    return 1;
+}else{
+    return 0;
+}
 
-        this.userMapper.add(user);
     }
 
     @Override

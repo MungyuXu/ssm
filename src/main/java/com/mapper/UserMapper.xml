@@ -23,7 +23,7 @@
         </where>
     </select>
 
-    <insert id="add" parameterType="Tour">
+    <insert id="add" parameterType="User">
         insert  into user(username, password) values (#{username},#{password})
     </insert>
 

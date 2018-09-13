@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +18,7 @@ public class UserController {
     UserService userService;
     @RequestMapping("list")
     public  String list(User user, Model model){
-        model.addAttribute("list",userService.queryAll(user));
+        model.addAttribute("list_user",userService.queryAll(user));
         return "user_list";
     }
 
@@ -26,15 +27,16 @@ public class UserController {
         return  "user_add";
     }
     @RequestMapping("add")
-    public  String add(User user, HttpSession session){
-        this.userService.add(user);
-        return "redirect:/user/list";
+    @ResponseBody
+    public  int add(User user, HttpSession session){
+
+        return userService.add(user) ;
     }
 
     @RequestMapping("del")
     public  String del(Integer id){
         this.userService.del(id);
-        return "redirect:/tour/list";
+        return "redirect:/user/list.do";
     }
 
     @RequestMapping("preUpdate")
