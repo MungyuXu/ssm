@@ -37,9 +37,25 @@
         <!--<property name="configLocation" value="classpath:sqlMapConfig.xml" />-->
         <property name="configLocation" value="classpath:sqlMapConfig.xml" />
 
+        <!-- 配置插件 -->
+        <property name="plugins">
+            <array>
+                <!-- 分页插件 -->
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!-- config params as the following -->
+                        <value>
+                            param1=mysql
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+
+
     </bean>
 
-    
+
 
     <!-- mapper扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

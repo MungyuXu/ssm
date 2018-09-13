@@ -13,4 +13,5 @@ public interface TourMapper {
     void  del(Integer id);
     Tour getById(Integer id);
     void  update(Tour tour);
+    public Integer selCount(Tour tour);
 }

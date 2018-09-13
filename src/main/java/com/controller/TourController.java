@@ -21,8 +21,8 @@ public class TourController {
     @Resource
     private TourService tourService;
     @RequestMapping("list")
-    public  String list(Tour tour, Model model){
-        model.addAttribute("list",tourService.queryAll(tour));
+    public  String list(Integer currPage,Tour tour, Model model){
+        model.addAttribute("page",tourService.queryAll(currPage,tour));
         return "admin/tour_list";
     }
     @RequestMapping("add")

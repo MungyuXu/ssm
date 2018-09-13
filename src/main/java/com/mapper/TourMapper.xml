@@ -65,4 +65,8 @@
 		new_price=#{newPrice},old_price=#{oldPrice},provider=#{provider},type=#{type},route=#{route}
 		where id=#{id}
 	</update>
+
+    <select id="selCount" parameterType="Tour" resultType="Integer">
+		select count(*) from tour
+	</select>
 </mapper>

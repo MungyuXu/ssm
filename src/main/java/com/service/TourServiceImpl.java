@@ -1,7 +1,9 @@
 package com.service;
 
+import com.github.pagehelper.PageHelper;
 import com.mapper.TourMapper;
 import com.model.Tour;
+import com.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +25,17 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public List<Tour> queryAll(Tour tour) {
-        return this.tourMapper.queryAll(tour);
+    public Page queryAll(Integer currPage, Tour tour) {
+        if (currPage == null) currPage = 1;
+        Page page = new Page();
+        page.setCurrPage(currPage);
+        page.setTotalCount(this.tourMapper.selCount(tour));
+        page.init();
+        PageHelper.startPage(currPage,Page.PAGE_SIZE);
+        page.setData(this.tourMapper.queryAll(tour));
+
+
+        return page;
     }
 
     @Override
@@ -46,4 +57,6 @@ public class TourServiceImpl implements TourService {
     public void update(Tour tour) {
         this.tourMapper.update(tour);
     }
+
+
 }
